@@ -12,10 +12,10 @@
 This Project is a classification task, in which I train an artificial neural network model to classify images of leaves into one of the 14 categories provided.
 Each model was then evaluated based on its mean accuracy metric on an unknown test set.
 The strategy followed are subdivided into three separate phases:
-● Definition of a basic convolutional neural network, looking how it behaves with changes in the hyperparameters
-● Using the knowledge gained, implementation of the transfer learning + fine-tuning techniques in
+*  Definition of a basic convolutional neural network, looking how it behaves with changes in the hyperparameters
+*  Using the knowledge gained, implementation of the transfer learning + fine-tuning techniques in
 a new model
-● Searching in the literature for further improvements to better tune our model
+*  Searching in the literature for further improvements to better tune our model
 
 ## Method 
 
