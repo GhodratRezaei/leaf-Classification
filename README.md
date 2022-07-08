@@ -36,7 +36,53 @@ augmentation is performed synchronously with the rest of the model execution, me
 benefit from GPU acceleration.
 After having implemented all the above efficiency improvements on the simple CNN architecture seen in
 class, it has been possible to notice that the new updated version was 7 times faster on a single epoch with
-respect to the default model.
+respect to the default model.           
+
+
+### First Attempt: A simple CNN
+
+
+The model chosen for the first attempt was the same as one used during an exercise lab.
+In particular, as with the configuration, it was made up of 5 blocks of convolution + ReLU + batch
+normalization + max pooling layers, plus a flatten layer and two fully connected layers on top of them (the
+last one being the classifier one) with dropout equal to 0.3. As a callback Early Stopping has been used to
+avoid overfitting, with a patience of 10 epochs.
+With this simple model different hyperparameters has been tested:
+*  The dropout amount
+*  The learning rate value
+*  The batch size value
+*  The number of units in the first fully connected layer
+To make the analysis we followed both a train and error approach, as well as using the KerasTuner
+library.
+It has been concluded that the most relevant hyperparameters that affects the validation accuracy are the
+batch size and the learning rate: 1
+
+*  Batch sizes of 8, 16, 32, 64, 128 were tested. The best result was obtained with a batch of size 64,
+enough large to be representative of the train dataset and at the same time less RAM demanding
+than a 128 sized one.
+*  A high learning rate does not allow the optimizer to reach the minima of the loss function, but
+constraints it to oscillate around it. At the same time a low learning rate may not be enough for
+the network to learn, for example stopping the optimizer iterations on a local minima. A trade-off
+approach has been followed for the Transfer Learning + Fine Tuning notebook, which will be
+discussed in the following section.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
