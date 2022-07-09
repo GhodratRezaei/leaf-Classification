@@ -96,7 +96,7 @@ suggested by the Keras documentation I initialized the weights using the latest
 
 
 
-*   #### **Transfer Learning**
+#### **Transfer Learning**
 
 
 The EfficientNet network has been imported in the model right after the augmentation layers, without
@@ -116,7 +116,7 @@ Learning part but worse overall.
 
 
 
-*   #### **Fine Tunning**
+#### **Fine Tunning**
 
 
 
