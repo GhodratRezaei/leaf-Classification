@@ -75,14 +75,15 @@ discussed in the following section.
 
 ###  Second Attempt: Transfer Learning + Fine Tuning
 
-Since the first introductory lesson on these two techniques we were fascinated by their huge power, so we
-decided to implement them quite early in the competition.
+
 The need for a great validation accuracy score combined with a good efficiency measured in terms of
-number of parameters and FLOPS operations led us to choose the EfficientNet network, as it can be
-observed in the Figure 1
+number of parameters and FLOPS operations led me to choose the EfficientNet network, as it can be
+observed in the image below.
+
+![Untitled](https://user-images.githubusercontent.com/75788150/178113900-d379eefe-f6ff-4d48-9e11-1194648f6e0a.png)
 
 
-
+![Untitled2](https://user-images.githubusercontent.com/75788150/178113901-1c4e7a4b-2cf9-4eb2-8840-89bd3f1e8cfe.png)
 
 
 
