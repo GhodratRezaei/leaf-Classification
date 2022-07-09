@@ -52,7 +52,7 @@ With this simple model different hyperparameters has been tested:
 *  The learning rate value
 *  The batch size value
 *  The number of units in the first fully connected layer
-To make the analysis we followed both a train and error approach, as well as using the KerasTuner
+To make the analysis I followed both a train and error approach, as well as using the KerasTuner
 library.
 It has been concluded that the most relevant hyperparameters that affects the validation accuracy are the
 batch size and the learning rate: 1
@@ -79,15 +79,67 @@ discussed in the following section.
 The need for a great validation accuracy score combined with a good efficiency measured in terms of
 number of parameters and FLOPS operations led me to choose the EfficientNet network, as it can be
 observed in the image below.
+
+
+
 ![Untitled3](https://user-images.githubusercontent.com/75788150/178113998-1584c9dd-e062-40a7-b68d-893e1f7b269c.png)
 
 
 
 
+In particular I adopted the EfficientNet-B4 model, as it already reaches great performance with a
+computational effort comparable with Inception-V2, DenseNet-201 and Xception models. I could
+choose even a better accuracy model like B5, B6, B7 or B8 ones, but I preferred to keep working
+following the efficiency philosophy already described above.
+In order to boost even more the accuracy of the model without increasing the computational effort, as
+suggested by the Keras documentation I initialized the weights using the latest
+
+
+
+*   #### Transfer Learning
+
+
+The EfficientNet network has been imported in the model right after the augmentation layers, without
+its top dense ones. The layers have been set as non-trainable, as I wanted to preserve the feature
+extraction capabilities of the pre-trained model. The dense layers have the following configuration:
+*   GlobalAveragePooling2D: it allows to reduce overfitting with respect to a simple flatten layer,
+acting as a regularizer
+*   BatchNormalization: it is a regularizer too, normalizing the output and centering it
+*   DenseLayer: added to increase the depth of the network
+*   Dropout: it reduces the overfitting as well randomly changing the number of units of the
+previous layer
+*   OutputLayer: the classifier itself.
+The learning rate value chosen is 1e-2. It is a relatively high one, but as written in the Keras
+documentation it is a valid option for this phase (warming up phase). Learning rate scheduler has been
+tried as well (TriangularCyclicalLearningRate), resulting in better results for the Transfer
+Learning part but worse overall.
+
+
+
+*   #### Fine Tunning 
+
+
+
+The EfficientNet-B4 network is made up of hundreds of layers subdivided into 7 blocks. During fine
+tuning a number of layers get unfrozen and then the model is fitted using a smaller learning rate (1e-4) to
+avoid losing the beneficial results obtained during the Transfer Learning phase.
+Note:
+● I unfroze only the last block of layers (31), since it is recommended to freeze/unfreeze one or
+more full blocks. In a second notebook also the 6th block as been unfrozen, leading to worse
+results so I chose to continue with only one unfrozen block for the future attempts
+● As suggested by keras, the BatchNormalization layers has been kept frozen
 
 
 
 
+## Result
+
+The results achieved in the first test set were definitely promising, showing the power of the
+improvements adopted. You can see the results in figure below.
+
+
+
+![Capture](https://user-images.githubusercontent.com/75788150/178114260-dd1ddf18-a21e-4ea8-aba8-596b0b0afaba.PNG)
 
 
 
