@@ -175,3 +175,5 @@ optimizer converge
 ## Install Requirements
 
 Note that script is run on kaggle.com using the GPU accelerator.
+For the datase use this [link](https://drive.google.com/file/d/16qiL7vNqu4BxVuiYaZzhiv1YCbJxxcon/view?usp=sharing)
+
