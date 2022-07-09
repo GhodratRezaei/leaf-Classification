@@ -5,7 +5,7 @@
 1. [Introduction](#my_first_title)
 2. [Method](#my-second-title)
 3. [Result](#my-third-title)
-4. [Install Requirements](#my-fourth-title)
+4. [Usage](#my-fourth-title)
 
 
 ## **Introduction**
@@ -180,7 +180,7 @@ optimizer converge
 
 
 
-## Install Requirements
+## Usage
 
 Note that script is run on kaggle.com using the GPU accelerator.
 For the datase use this [link](https://drive.google.com/file/d/16qiL7vNqu4BxVuiYaZzhiv1YCbJxxcon/view?usp=sharing)
