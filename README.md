@@ -156,10 +156,10 @@ In order to increase the accuracy provided by the model, various attempts have b
 *  Changing the loss function to be minimized during training, from the standard CategoricalCrossEntropy (Eq. 1) to the SigmoidalFocalCrossEntropy (Eq. 2).The
 latter introduces an adjustment to the cross-entropy criterion and in general is useful once I have imbalanced classes, as in our case, or in object detection problems. It assigns a loss value much higher for a misclassified sample with respect to a well-classified ones:
 
-Categorical cross-entropy :     𝐶𝐸(𝑝)𝑡 =− 𝑙𝑜𝑔(𝑝𝑡)
+      Categorical cross-entropy :     𝐶𝐸(𝑝)𝑡 =− 𝑙𝑜𝑔(𝑝𝑡)
 
 
-Sigmoidal focal cross-entropy :      FL(p)𝑡 =− (1 − 𝑝𝑡)γ𝑙𝑜𝑔(𝑝𝑡)
+       Sigmoidal focal cross-entropy :      FL(p)𝑡 =− (1 − 𝑝𝑡)γ𝑙𝑜𝑔(𝑝𝑡)
 
 
 *  In the Fine Tuning part, it has been applied a ReduceLROnPlateau callback which after a given
