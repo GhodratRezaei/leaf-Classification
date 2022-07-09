@@ -148,53 +148,26 @@ improvements adopted. You can see the results in figure below.
 ###  **Further attempts**
 
 
-In order to increase the accuracy provided by the model, various attempts have been performed. In the
-following lines the main ones are going to be explained:
-*   Implementation of additional augmentation layers: RandomCrop, since the test images could be
-cropped as well, and GaussianNoise, since the test images may have not a black background as the
-training ones or may contain some noise
-*   Increasing the image size, from 256x256 to 380x380 using bilinear interpolation, since the
-EfficientNet-B4 network was initially developed for this size
-*   Changing the dense layer activation function from ReLU to Mish. The Mish activation function is
-a slightly modified version of the ReLU, non monotonic, that in some cases provided a better
-result.
-*   Completely removing the 512 units dense layer, as it may lead to overfit, leaving just the
-GlobalAveragePooling2D and the BatchNormalization before the classifier
-*   Changing the optimizer, from the standard Adam to the Ranger, which is a combination of the
-Rectified Adam with the Lookahead optimizer: it should converge faster, avoiding local minima
-*  Changing the loss function to be minimized during training, from the standard
-CategoricalCrossEntropy (Eq. 1) to the SigmoidalFocalCrossEntropy (Eq. 2).The
-latter introduces an adjustment to the cross-entropy criterion and in general is useful once I
-have imbalanced classes, as in our case, or in object detection problems. It assigns a loss value
-much higher for a misclassified sample with respect to a well-classified ones:
+In order to increase the accuracy provided by the model, various attempts have been performed. In the following lines the main ones are going to be explained:
+*   Implementation of additional augmentation layers: RandomCrop, since the test images could be cropped as well, and GaussianNoise, since the test images may have not a black background as the training ones or may contain some noise
+*   Increasing the image size, from 256x256 to 380x380 using bilinear interpolation, since the EfficientNet-B4 network was initially developed for this size
+*   Changing the dense layer activation function from ReLU to Mish. The Mish activation function is a slightly modified version of the ReLU, non monotonic, that in some cases provided a better result.
+*   Completely removing the 512 units dense layer, as it may lead to overfit, leaving just the GlobalAveragePooling2D and the BatchNormalization before the classifier
+*   Changing the optimizer, from the standard Adam to the Ranger, which is a combination of the Rectified Adam with the Lookahead optimizer: it should converge faster, avoiding local minima
+*  Changing the loss function to be minimized during training, from the standard CategoricalCrossEntropy (Eq. 1) to the SigmoidalFocalCrossEntropy (Eq. 2).The
+latter introduces an adjustment to the cross-entropy criterion and in general is useful once I have imbalanced classes, as in our case, or in object detection problems. It assigns a loss value much higher for a misclassified sample with respect to a well-classified ones:
 (Eq. 1 - Categorical 𝐶𝐸(𝑝 cross-entropy) 𝑡) =− 𝑙𝑜𝑔(𝑝𝑡)
 𝐹𝐿(𝑝 (Eq. 2 - Sigmoidal focal cross-entropy) 𝑡) =− (1 − 𝑝𝑡)γ𝑙𝑜𝑔(𝑝𝑡)
 *  In the Fine Tuning part, it has been applied a ReduceLROnPlateau callback which after a given
 patience (no val_accuracy improvements) it reduces the learning rate of a given factor, to help the
 optimizer converge
-● In the Fine Tuning part, it has been applied the Triangular2CyclicalLearningRate function, which
-returns an exponentially decaying triangular shaped learning rates, which combines the reduction
-of the learning rate with the cyclical temporary increase (to avoid local minima)
-● For the CategoricalCrossentropy loss function, I tried enabling label smoothing in order to
-avoid overconfidence. The results were promising, but due to slow convergence and limited
-remaining time, I only trained a model with fine-tuning epoch numbers equal to 35.
-Nevertheless, this model which did not fully converge gave us the best score in the
-final phase (0.9377).
-Unfortunately our trial and error procedure, which implemented combinations of the above attempts,
-didn’t give us better validation accuracy results (except label smoothing), thus only few of them were
-submitted also for the test evaluation. Probably a more rigorous approach could have led us to increase
-the test accuracy.
+*  In the Fine Tuning part, it has been applied the Triangular2CyclicalLearningRate function, which returns an exponentially decaying triangular shaped learning rates, which combines the reduction of the learning rate with the cyclical temporary increase (to avoid local minima)
+*  For the CategoricalCrossentropy loss function, I tried enabling label smoothing in order to avoid overconfidence. The results were promising, but due to slow convergence and limited remaining time, I only trained a model with fine-tuning epoch numbers equal to 35. Nevertheless, this model which did not fully converge gave us the best score in the final phase (0.9377). Unfortunately our trial and error procedure, which implemented combinations of the above attempts, didn’t give us better validation accuracy results (except label smoothing), thus only few of them were submitted also for the test evaluation. Probably a more rigorous approach could have led us to increase the test accuracy.
 
 
 
 
 
+## Install Requirements
 
-
-
-
-
-
-In the next section(s), we will enter into the details of these three steps. Note that all the notebooks are
-run on kaggle.com using the GPU accelerator. The amount of free GPU time per week was limited, so we
-searched for a way to improve the performance of the code also from a computational point of view.
+Note that script is run on kaggle.com using the GPU accelerator.
