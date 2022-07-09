@@ -153,7 +153,7 @@ In order to increase the accuracy provided by the model, various attempts have b
 *   Changing the dense layer activation function from ReLU to Mish. The Mish activation function is a slightly modified version of the ReLU, non monotonic, that in some cases provided a better result.
 *   Completely removing the 512 units dense layer, as it may lead to overfit, leaving just the GlobalAveragePooling2D and the BatchNormalization before the classifier
 *   Changing the optimizer, from the standard Adam to the Ranger, which is a combination of the Rectified Adam with the Lookahead optimizer: it should converge faster, avoiding local minima
-*  Changing the loss function to be minimized during training, from the standard CategoricalCrossEntropy (Eq. 1) to the SigmoidalFocalCrossEntropy (Eq. 2).The
+*  Changing the loss function to be minimized during training, from the standard CategoricalCrossEntropy to the SigmoidalFocalCrossEntropy.The
 latter introduces an adjustment to the cross-entropy criterion and in general is useful once I have imbalanced classes, as in our case, or in object detection problems. It assigns a loss value much higher for a misclassified sample with respect to a well-classified ones:
 
       ``Categorical cross-entropy :     𝐶𝐸(𝑝)𝑡 =− 𝑙𝑜𝑔(𝑝𝑡)``
