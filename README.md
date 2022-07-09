@@ -156,8 +156,8 @@ In order to increase the accuracy provided by the model, various attempts have b
 *   Changing the optimizer, from the standard Adam to the Ranger, which is a combination of the Rectified Adam with the Lookahead optimizer: it should converge faster, avoiding local minima
 *  Changing the loss function to be minimized during training, from the standard CategoricalCrossEntropy (Eq. 1) to the SigmoidalFocalCrossEntropy (Eq. 2).The
 latter introduces an adjustment to the cross-entropy criterion and in general is useful once I have imbalanced classes, as in our case, or in object detection problems. It assigns a loss value much higher for a misclassified sample with respect to a well-classified ones:
-(Eq. 1 - Categorical 𝐶𝐸(𝑝 cross-entropy) 𝑡) =− 𝑙𝑜𝑔(𝑝𝑡)
-𝐹𝐿(𝑝 (Eq. 2 - Sigmoidal focal cross-entropy) 𝑡) =− (1 − 𝑝𝑡)γ𝑙𝑜𝑔(𝑝𝑡)
+Categorical cross-entropy :     𝐶𝐸(𝑝)𝑡 =− 𝑙𝑜𝑔(𝑝𝑡)
+Sigmoidal focal cross-entropy :      FL(p)𝑡 =− (1 − 𝑝𝑡)γ𝑙𝑜𝑔(𝑝𝑡)
 *  In the Fine Tuning part, it has been applied a ReduceLROnPlateau callback which after a given
 patience (no val_accuracy improvements) it reduces the learning rate of a given factor, to help the
 optimizer converge
