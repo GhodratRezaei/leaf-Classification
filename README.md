@@ -1,14 +1,14 @@
-# leaf-Classification
+# **leaf-Classification**
 
 
-# Table Of Content
+# **Table Of Content**
 1. [Introduction](#my_first_title)
 2. [Method](#my-second-title)
 3. [Result](#my-third-title)
 4. [Install Requirements](#my-fourth-title)
 
 
-## Introduction
+## **Introduction**
 This Project is a classification task, in which I train an artificial neural network model to classify images of leaves into one of the 14 categories provided.
 Each model was then evaluated based on its mean accuracy metric on an unknown test set.
 The strategy followed are subdivided into three separate phases:
@@ -17,7 +17,7 @@ The strategy followed are subdivided into three separate phases:
 a new model
 *  Searching in the literature for further improvements to better tune our model
 
-## Method 
+## **Method**
 
 
 As stated by the TensorFlow official documentation, “Achieving peak performance requires an efficient
@@ -39,7 +39,7 @@ class, it has been possible to notice that the new updated version was 7 times f
 respect to the default model.           
 
 
-### First Attempt: A simple CNN
+### **First Attempt: A simple CNN**
 
 
 The model chosen for the first attempt was the same as one used during an exercise lab.
@@ -73,7 +73,7 @@ discussed in the following section.
 
 
 
-###  Second Attempt: Transfer Learning + Fine Tuning
+###  **Second Attempt: Transfer Learning + Fine Tuning**
 
 
 The need for a great validation accuracy score combined with a good efficiency measured in terms of
@@ -96,7 +96,7 @@ suggested by the Keras documentation I initialized the weights using the latest
 
 
 
-*   #### Transfer Learning
+*   #### **Transfer Learning**
 
 
 The EfficientNet network has been imported in the model right after the augmentation layers, without
@@ -116,7 +116,7 @@ Learning part but worse overall.
 
 
 
-*   #### Fine Tunning 
+*   #### **Fine Tunning**
 
 
 
@@ -132,7 +132,7 @@ results so I chose to continue with only one unfrozen block for the future attem
 
 
 
-## Result
+## **Result**
 
 The results achieved in the first test set were definitely promising, showing the power of the
 improvements adopted. You can see the results in figure below.
