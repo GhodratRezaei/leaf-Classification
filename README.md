@@ -120,21 +120,20 @@ Learning part but worse overall.
 
 
 
-The EfficientNet-B4 network is made up of hundreds of layers subdivided into 7 blocks. During fine
-tuning a number of layers get unfrozen and then the model is fitted using a smaller learning rate (1e-4) to
-avoid losing the beneficial results obtained during the Transfer Learning phase.
+The EfficientNet-B4 network is made up of hundreds of layers subdivided into 7 blocks. During fine tuning a number of layers get unfrozen and then the model is fitted using a smaller learning rate (1e-4) to avoid losing the beneficial results obtained during the Transfer Learning phase.
 Note:
-● I unfroze only the last block of layers (31), since it is recommended to freeze/unfreeze one or
+*  I unfroze only the last block of layers (31), since it is recommended to freeze/unfreeze one or
 more full blocks. In a second notebook also the 6th block as been unfrozen, leading to worse
 results so I chose to continue with only one unfrozen block for the future attempts
-● As suggested by keras, the BatchNormalization layers has been kept frozen
+*  As suggested by keras, the BatchNormalization layers has been kept frozen
 
 
 
 
 ## **Result**
 
-The results achieved in the first test set were definitely promising, showing the power of the
+The results achieved in the first test set 
+are definitely promising, showing the power of the
 improvements adopted. You can see the results in figure below.
 
 
