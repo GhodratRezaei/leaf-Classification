@@ -39,7 +39,7 @@ class, it has been possible to notice that the new updated version was 7 times f
 respect to the default model.           
 
 
-### First Attempt: A simple CNN**
+### **First Attempt: A simple CNN**
 
 
 The model chosen for the first attempt was the same as one used during an exercise lab.
