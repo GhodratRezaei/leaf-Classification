@@ -9,7 +9,15 @@
 
 
 ## **Introduction**
-This Project is a classification task, in which I train an artificial neural network model to classify images of leaves into one of the 14 categories provided.
+This Project is a classification task, in which I train an artificial neural network model to classify images of leaves into one of the 14 categories provided which is shown in below Images.
+
+
+
+![00001](https://user-images.githubusercontent.com/75788150/178115202-b1d91c2d-c714-4827-8f31-fe80041d8763.jpg)
+
+
+
+
 Each model was then evaluated based on its mean accuracy metric on an unknown test set.
 The strategy followed are subdivided into three separate phases:
 *  Definition of a basic convolutional neural network, looking how it behaves with changes in the hyperparameters
