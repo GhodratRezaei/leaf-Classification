@@ -12,8 +12,9 @@
 This Project is a classification task, in which I train an artificial neural network model to classify images of leaves into one of the 14 categories provided which is shown in below Images.
 
 
+![00001ddddddd](https://user-images.githubusercontent.com/75788150/178115261-2c914046-43cd-4a71-b238-8408ef56e603.jpg)
 
-![00001](https://user-images.githubusercontent.com/75788150/178115202-b1d91c2d-c714-4827-8f31-fe80041d8763.jpg)
+
 
 
 
